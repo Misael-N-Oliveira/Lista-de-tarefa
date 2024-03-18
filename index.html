@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Lista de Tarefas </h1>
+    <input type="text" id="taskInput" placeholder="Digite uma tarefa...">   
+    <button onclick="addTask()">Adicionar Tarefa</button>
+    
+    <div class="taref">
+    <ul id="taskList">   
+    <!--Lista de tarefas será inserida aqui-->
+    </ul>
+    </div>
+    <script>
+    function addTask() {
+    var taskInput = document.getElementById("taskInput");
+    var taskText = taskInput.value.trim();
+    //.trim — exclui o excesso de caracteres em branco
+    if (taskText !=="") {
+    var taskList = document.getElementById("taskList");
+    var li = document.createElement("li");
+    li.className = "taskItem"; 
+    li.innerHTML = taskText + '<button onclick="removeTask(this)">Remover</button>';
+    taskList.appendChild(li);
+    taskInput.value = "";
+     } else {
+    alert("(ERROR) Por favor, insira uma tarefa válida.");
+     }
+    }
+    function removeTask(button) {
+    var li = button.parentNode;
+    var ul = li.parentNode;
+    ul.removeChild(li);
+    }
+    </script>
+    </body>
+    <footer><h5>Desemvolvido por | Misael Oliveira | 03/2024. </h5></footer>
+</html>
